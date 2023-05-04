@@ -10,10 +10,10 @@ public class main {
     public static void main(String[] args) {
         
         frmPrincipal VistaPrincipal = new frmPrincipal();
-        frmPersonas VistaPersonas = new frmPersonas(VistaPrincipal, true);
-        ModeloPersona PersonaModel = new ModeloPersona();
+        frmPersonas VistaPersonas = new frmPersonas(null,true);
+        ModeloPersona PersonasModel = new ModeloPersona();
+        PersonaControler ControladorPaciente = new PersonaControler(VistaPrincipal, VistaPersonas, PersonasModel);
         
-        PersonaControler ControladorPersonas = new PersonaControler(VistaPrincipal, VistaPersonas, PersonaModel);
     }
     
 }

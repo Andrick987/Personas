@@ -2,17 +2,32 @@
 package Modelo;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class ModeloPersona {
     
-    public ArrayList<Persona> ListaPersonas = new ArrayList<Persona>();
-    
-    public void AgregarPersona(String apellido, String nombre, String telefono){
-        Persona NuevaPersona = new Persona(apellido, nombre, telefono);
-        this.ListaPersonas.add(NuevaPersona);
+    ArrayList MiLista = new ArrayList();
+     DefaultTableModel ModeloTabla;
+    public void IngresarDatos(String ape ,String nom, String tel)
+    {
+        Persona nuevoCliente = new Persona(ape, nom, tel);
+        this.MiLista.add(nuevoCliente);
     }
-    
-    public ArrayList ListarPersona(){
-        return ListaPersonas;
+  public DefaultTableModel ListarPacientes()
+    {
+        ArrayList<Persona>listaLocal = MiLista;
+        ModeloTabla = new DefaultTableModel();
+        this.ModeloTabla.setRowCount(0);
+        this.ModeloTabla.addColumn("APELLIDOS");
+        this.ModeloTabla.addColumn("NOMBRE");
+        this.ModeloTabla.addColumn("TELEFONO");
+        for(Persona MiListaDePacientes: listaLocal)
+        {
+            this.ModeloTabla.addRow(new Object []{MiListaDePacientes.getApellidos()
+                    ,MiListaDePacientes.getNombre(),MiListaDePacientes.getTelefono()});
+ 
     }
+        return ModeloTabla;
+    }
+
 }
